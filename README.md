@@ -7,11 +7,18 @@
 
 ## 导入
 
-1. 用 iPhone 相机扫描二维码，或在 Shadowrocket 的「配置」里添加：
-   `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@main/GoogleOne.conf`
+1. 用 iPhone 相机扫描 `GoogleOne-QR.png`，或在 Shadowrocket 的「配置」里添加：
+   - 主地址（jsDelivr）：`https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@main/GoogleOne.conf`
+   - 备用地址（GitHub Raw）：`https://raw.githubusercontent.com/521ox/shadowrocket-google-one/main/GoogleOne.conf`
 2. 打开该配置的 `ⓘ` > HTTPS 解密 > 生成并安装 CA 证书，然后在系统设置里信任证书。
 3. 首页选择一个节点，全局路由设为「配置」。
 4. 打开 `one.google.com/ai` 验证。
+
+## 规则内容
+
+- 响应体重写：`g1.ios.20tb.m.v2` → `com.google.gemini.2tb.ai.m.3month_ip_99p`
+- 匹配 URL：`^https://one.google.com/ai?.*$`（配置内按正则转义书写）
+- MITM：`one.google.com`
 
 ## 注意
 
