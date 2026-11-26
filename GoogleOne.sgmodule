@@ -1,0 +1,12 @@
+#!name=Google One
+#!desc=Google One /ai 响应改写 + QUIC 阻断（自用）
+#!system=ios
+
+[Rule]
+AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+
+[Script]
+googleone = type=http-response,pattern=^https:\/\/one\.google\.com\/,requires-body=1,max-size=0,script-path=https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@eb8823bf38bec23579121458596430c5e7d34347/googleone.js
+
+[MITM]
+hostname = %APPEND% one.google.com, payments.google.com, play.googleapis.com
