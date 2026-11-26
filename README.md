@@ -2,16 +2,17 @@
 
 ## G1 Ultra 严格复刻版（当前使用）
 
-按原模块 1:1 复制，只改了 `script-path` 的仓库地址；脚本只把 `DIAG = true` 改成 `DIAG = false`，其他字节不动。
+按原模块 1:1 复制，只改了 `script-path` 的仓库地址；脚本只把 `DIAG = true` 改成 `false`，其他字节不动。
 
-- 模块：`G1Ultra.sgmodule`
-  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@e5be77423639b22290f86e55bbc9b1b6e6c171ae/G1Ultra.sgmodule`
-- 脚本：`g1.js`
-  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@f01fdf036613250fde0e5d843459afe96a5142d2/g1.js`
-- 二维码：`G1Ultra-QR.png`
+- 模块（GitHub Raw，`text/plain`）
+  `https://raw.githubusercontent.com/521ox/shadowrocket-google-one/721e618aa6738fe245ebd92eec764a776ef639f1/G1Ultra.sgmodule`
+- 脚本（GitHub Raw，`text/plain`）
+  `https://raw.githubusercontent.com/521ox/shadowrocket-google-one/f01fdf036613250fde0e5d843459afe96a5142d2/g1.js`
+- 二维码：`G1Ultra-QR.png`；如果相机扫码无反应，用 Shadowrocket 内置扫码扫 `G1Ultra-QR-raw.png`。
 
 说明：
 
+- jsDelivr 对 `.sgmodule` 返回 `application/octet-stream`，可能无法导入；这里改用 GitHub Raw，返回 `text/plain`，与原模块一致。
 - `DIAG = false` 后不再调用 `report()`，不会向外 POST；代码里仍保留原 webhook 地址，但不会执行。
 - 原脚本只有 2 条映射：`g1.ios.20tb.m.v2` -> `g1.ios.20tb.m`、`g1.ios.30tb.ai.pro.m` -> `g1.ios.30tb.m`；没有 30GB 那条。
 - 模块名称、描述、QUIC 阻断规则、MITM 列表都保持原样。
