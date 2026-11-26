@@ -2,22 +2,23 @@
 
 ## G1 Ultra 严格复刻版（当前使用）
 
-按原模块 1:1 复制，只改了 `script-path` 的仓库地址；name、desc、rule、MITM 和脚本内容都不变。
+按原模块 1:1 复制，只改了 `script-path` 的仓库地址；脚本只把 `DIAG = true` 改成 `DIAG = false`，其他字节不动。
 
 - 模块：`G1Ultra.sgmodule`
-  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@d96596b8d9989785dbcf54d95fa97f0668b96db4/G1Ultra.sgmodule`
-- 脚本：`g1.js`，原文件字节级复制，SHA-256 与源文件一致
-  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@c11975b974a181f70479893ca3bd204c698b6495/g1.js`
+  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@e5be77423639b22290f86e55bbc9b1b6e6c171ae/G1Ultra.sgmodule`
+- 脚本：`g1.js`
+  `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@f01fdf036613250fde0e5d843459afe96a5142d2/g1.js`
 - 二维码：`G1Ultra-QR.png`
 
 说明：
 
-- 脚本保留原作者的 `REPORT_URL`（webhook.site），运行时会继续上报 URL、价格和 SKU 片段。
+- `DIAG = false` 后不再调用 `report()`，不会向外 POST；代码里仍保留原 webhook 地址，但不会执行。
 - 原脚本只有 2 条映射：`g1.ios.20tb.m.v2` -> `g1.ios.20tb.m`、`g1.ios.30tb.ai.pro.m` -> `g1.ios.30tb.m`；没有 30GB 那条。
+- 模块名称、描述、QUIC 阻断规则、MITM 列表都保持原样。
 
 ## 自用改进版（可选）
 
-`GoogleOne.sgmodule`：同样结构，脚本 `googleone.js`，额外包含 `g1.ios.30gb.m` -> `g1.ios.30tb.m`，去掉 webhook，protobuf 只应用等长替换。
+`GoogleOne.sgmodule`：同样结构，脚本 `googleone.js`，额外包含 `g1.ios.30gb.m` -> `g1.ios.30tb.m`，没有 webhook，protobuf 只应用等长替换。
 
 `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@0bd510b4aa4cb041188721c181ee164f4bd1b7fb/GoogleOne.sgmodule`
 
