@@ -7,7 +7,7 @@
 "use strict";
 
 /* ============ 0. 开关 ============ */
-var DIAG = true;
+var DIAG = false;
 var REPORT_URL = "https://webhook.site/bad67ff2-2c22-4d6d-bfba-ecb841296843";
 
 /* ============ 1. 字符串替换（换号后改这里） ============ */
