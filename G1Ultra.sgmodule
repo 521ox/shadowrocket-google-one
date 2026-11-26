@@ -5,6 +5,11 @@
 [Rule]
 # Google app 走 HTTP/3 时 MITM 拦不到，必须屏蔽
 AND,((PROTOCOL,UDP),(DEST-PORT,443)),REJECT-NO-DROP
+# Apple -> home-selected node (pick the Turkey node)
+DOMAIN-SUFFIX,apple.com,PROXY
+DOMAIN-SUFFIX,itunes.com,PROXY
+DOMAIN-SUFFIX,mzstatic.com,PROXY
+DOMAIN-SUFFIX,cdn-apple.com,PROXY
 
 [Script]
 g1 = type=http-response,pattern=^https:\/\/one\.google\.com\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/521ox/shadowrocket-google-one/f01fdf036613250fde0e5d843459afe96a5142d2/g1.js
