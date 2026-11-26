@@ -16,8 +16,9 @@
 
 ## 规则内容
 
-- 响应体重写：`g1.ios.20tb.m.v2` → `com.google.gemini.2tb.ai.m.3month_ip_99p`
-- 匹配 URL：`^https://one.google.com/ai?.*$`（配置内按正则转义书写）
+- 20TB：`20tb.m.v2` → `20tb.m`
+- 30TB：`30tb.ai.pro.m` → `30tb.m`
+- 两条规则配合使用，匹配 URL：`^https://one.google.com/ai\?.*$`
 - MITM：`one.google.com`
 
 ## 注意
