@@ -5,13 +5,14 @@
 
 - `GoogleOne.conf`：HTTPS 解密 + `one.google.com/ai` 响应体重写
 - 规则：Google 相关域名走代理，其余直连
+- `block-quic = all-proxy`：阻断代理连接的 QUIC，让 Google 回落到 TCP/TLS，便于 MITM 和查看详细日志
 
 ## 导入
 
 1. 用 iPhone 相机扫描 `GoogleOne-QR.png`，或在 Shadowrocket 的「配置」里添加：
    - 主地址（jsDelivr）：`https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@main/GoogleOne.conf`
    - 备用地址（GitHub Raw）：`https://raw.githubusercontent.com/521ox/shadowrocket-google-one/main/GoogleOne.conf`
-2. 打开该配置的 `ⓘ` > HTTPS 解密 > 生成并安装 CA 证书，然后在系统设置里信任证书。
+2. 打开该配置的 `ⓘ` > HTTPS 解密 > 生成并安装 CA 证书，然后在系统设置里信任证书；同时打开「通过 HTTP/2 进行中间人攻击」。
 3. 首页选择一个节点，全局路由设为「配置」。
 4. 打开 `one.google.com/ai` 验证。
 
@@ -22,6 +23,11 @@
 - iOS 20TB v2：`20tb.m.v2` → `20tb.m`
 - 具体规则放在通用规则前面，避免 `30tb.ai.pro.m` 先匹配掉 Gemini 的完整 SKU。
 - MITM：`one.google.com`
+
+## 日志
+
+- 网络记录在「数据 → 代理」，先打开「启用日志记录」。
+- 记录显示 `MITM` 才是已解密；只显示 UDP/QUIC 的条目没有 HTTP 详情，阻断 QUIC 后会回落到 TCP/TLS。
 
 ## 注意
 
