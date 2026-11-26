@@ -9,10 +9,13 @@
 ## 导入
 
 1. 删掉旧的 Google One 配置，重新扫描 `GoogleOne-QR.png`，或添加：
-   `https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@main/GoogleOne.conf`
+   - 固定版本（推荐）：`https://cdn.jsdelivr.net/gh/521ox/shadowrocket-google-one@dd87eac/GoogleOne.conf`
+   - 备用地址：`https://raw.githubusercontent.com/521ox/shadowrocket-google-one/main/GoogleOne.conf`
 2. 打开配置的 `ⓘ` > HTTPS 解密：打开开关，域名填 `one.google.com`，证书使用已信任的那张。
-3. 建议打开「通过 HTTP/2 进行中间人攻击」；截图里是关闭状态，部分 HTTP/2 请求可能不解密。
+3. 建议打开「通过 HTTP/2 进行中间人攻击」；部分 HTTP/2 请求在关闭时可能不解密。
 4. 首页选一个节点，全局路由设为「配置」。
+
+> jsDelivr 的 `@main` 地址可能缓存旧版本；上面的固定 commit 地址不会，适合直接导入。
 
 ## 规则内容
 
